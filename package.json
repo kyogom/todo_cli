@@ -1,7 +1,6 @@
 {
   "name": "notes",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -17,7 +16,12 @@
   ],
   "author": "Kyogo Mochida <npdijeb1@gmail.com> (https://qiita.com/kyogom)",
   "license": "ISC",
+  "bin": {
+    "todo": "index.js"
+  },
   "dependencies": {
     "chalk": "^2.2.0"
-  }
+  },
+  "devDependencies": {},
+  "description": ""
 }
