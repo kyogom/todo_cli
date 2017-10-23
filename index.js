@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 'use strict';
-var chalk = require('chalk');
 var dateUtils = require('date-utils');
 var file  = require('./lib/file.js');
 var method = process.argv[2];
@@ -9,10 +8,11 @@ var args2 = process.argv[4];
 
 switch(method) {
   case 'list':
-    file.readFile('titles');
-    break;
-  case 'list -a':
-    file.readFile('all');
+    if(!args1) {
+      file.readFile('titles');
+    } else if(args1 ==='-a') {
+      file.readFile('all');
+    }
     break;
   case 'add':
     file.appendFile(args1, args2);
