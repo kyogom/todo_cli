@@ -64,6 +64,8 @@ switch(method) {
      //todo delete last
      //最後に追加したtodo論理削除フラグを立てる
      file.deleteFile('last');
+   }　else {
+     file.deleteFile(args1);
    }
    break;
   default:
