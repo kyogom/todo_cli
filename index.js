@@ -6,6 +6,7 @@ var chalk = require('chalk');
 var method = process.argv[2];
 var args1 = process.argv[3];
 var args2 = process.argv[4];
+var args3 = process.argv[5];
 
 switch(method) {
   case 'list':
@@ -64,12 +65,20 @@ switch(method) {
      //todo delete last
      //最後に追加したtodo論理削除フラグを立てる
      file.deleteFile('last');
-   }　else {
-     file.deleteFile(args1);
    }
    break;
   default:
     //コマンドが間違っているので、helpを表示
       file.readHelp();
     break;
+  case 'move':
+    if(args1 > 0 && args2 ==='to' && args3 > 0){
+      //todo move args1 to args3
+      file.moveFile(args1, args3);
+    } else {
+      //todo move
+      //引数が足りていないのでhelpを表示
+      file.readHelp();
+    }
+  break;
 }
