@@ -1,0 +1,11 @@
+this is how to use todo_cli...
+
+list                      show all titles of todo
+list -a / all             show all infomation of todo
+add [title] [detail]      add todo
+show last                 show todo most recently added
+show first                show todo most primary added
+delete last               delete todo most recently added
+delete first              delete todo most primary added
+delete -a                 delete all todo
+move [number] to [number] move todo
