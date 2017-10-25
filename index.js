@@ -14,7 +14,7 @@ switch(method) {
       //引数がなければタイトルのみ一覧表示する
       file.readFile('titles');
     } else if(args1 ==='-a' || args1 ==='all') {
-      //todo list -a || todo list all
+      //todo list -a / all
       //オプション「-a」か「all」があれば、全てのTodoを一覧表示する
       file.readFile('all');
     }
@@ -39,9 +39,11 @@ switch(method) {
   case 'show':
     if(args1 === 'first'){
       //todo show first
+      //最初に追加したtodoを見る
       file.readFile('first');
     } else if(args1 === 'last') {
       //todo show last
+      //最後に追加したtodoを見る
       file.readFile('last');
     } else {
       //todo show
@@ -49,6 +51,21 @@ switch(method) {
       file.readHelp();
     }
     break;
+  case 'delete':
+   if(args1 === '-a' || args1 === 'all') {
+     //todo delete -a / all
+     //全てのレコードに論理削除フラグを立てる
+     file.deleteFile('all');
+   } else if(args1 === 'first') {
+     //todo delete first
+     //最初に追加したtodoに論理削除フラグを立てる
+     file.deleteFile('first');
+   } else if(args1 === 'last') {
+     //todo delete last
+     //最後に追加したtodo論理削除フラグを立てる
+
+   }
+   break;
   default:
     //コマンドが間違っているので、helpを表示
       file.readHelp();
