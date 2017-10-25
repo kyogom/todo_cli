@@ -63,7 +63,7 @@ switch(method) {
    } else if(args1 === 'last') {
      //todo delete last
      //最後に追加したtodo論理削除フラグを立てる
-
+     file.deleteFile('last');
    }
    break;
   default:
