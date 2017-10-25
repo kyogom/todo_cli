@@ -10,22 +10,46 @@ var args2 = process.argv[4];
 switch(method) {
   case 'list':
     if(!args1) {
+      // todo list
       //引数がなければタイトルのみ一覧表示する
       file.readFile('titles');
     } else if(args1 ==='-a' || args1 ==='all') {
+      //todo list -a || todo list all
       //オプション「-a」か「all」があれば、全てのTodoを一覧表示する
       file.readFile('all');
     }
     break;
   case 'add':
-    if(args2){
+    if(!args1) {
+      //todo add
+      //引数が足りていないのでhelpを表示
+      file.readHelp();
+    }
+    if(!args2) {
+      //todo add title
+      //detailがなければ' 'を設定
+      args2 = ' ';
       file.appendFile(args1, args2);
     } else {
-      args2 = ' ';
+      //todo add title detail
+      //todoを追加する
       file.appendFile(args1, args2);
     }
     break;
+  case 'show':
+    if(args1 === 'first'){
+      //todo show first
+
+    } else if(args2 === 'last') {
+      //todo show last
+
+    } else {
+      //todo show
+      //引数が足りていないのでhelpを表示
+      file.readHelp();
+    }
   default:
+    //コマンドが間違っているので、helpを表示
       file.readHelp();
     break;
 }
