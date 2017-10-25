@@ -39,15 +39,16 @@ switch(method) {
   case 'show':
     if(args1 === 'first'){
       //todo show first
-
-    } else if(args2 === 'last') {
+      file.readFile('first');
+    } else if(args1 === 'last') {
       //todo show last
-
+      file.readFile('last');
     } else {
       //todo show
       //引数が足りていないのでhelpを表示
       file.readHelp();
     }
+    break;
   default:
     //コマンドが間違っているので、helpを表示
       file.readHelp();
