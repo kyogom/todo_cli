@@ -74,7 +74,7 @@ switch(method) {
   case 'move':
     if(args1 > 0 && args2 ==='to' && args3 > 0){
       //todo move args1 to args3
-      file.moveFile(args1, args3);
+      file.moveFile(args1 - 1, args3 - 1);
     } else {
       //todo move
       //引数が足りていないのでhelpを表示
