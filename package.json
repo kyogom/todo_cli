@@ -1,5 +1,5 @@
 {
-  "name": "notes",
+  "name": "todo_cli_kyogo",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -12,7 +12,8 @@
   "keywords": [
     "todo",
     "list",
-    "note"
+    "note",
+    "kyogo"
   ],
   "author": "Kyogo Mochida <npdijeb1@gmail.com> (https://qiita.com/kyogom)",
   "license": "ISC",
