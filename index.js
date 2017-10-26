@@ -3,10 +3,13 @@
 var dateUtils = require('date-utils');
 var file  = require('./lib/file.js');
 var chalk = require('chalk');
+var util = require('./lib/utils.js');
 var method = process.argv[2];
 var args1 = process.argv[3];
 var args2 = process.argv[4];
 var args3 = process.argv[5];
+//ファイルのpath
+var path_todo = "./todo.json";
 
 switch(method) {
   case 'list':
@@ -53,32 +56,36 @@ switch(method) {
     }
     break;
   case 'delete':
-   if(args1 === '-a' || args1 === 'all') {
-     //todo delete -a / all
-     //全てのレコードに論理削除フラグを立てる
-     file.deleteFile('all');
-   } else if(args1 === 'first') {
-     //todo delete first
-     //最初に追加したtodoに論理削除フラグを立てる
-     file.deleteFile('first');
-   } else if(args1 === 'last') {
-     //todo delete last
-     //最後に追加したtodo論理削除フラグを立てる
-     file.deleteFile('last');
-   }
+  if(util.isExistFile(path_todo)){
+    if(args1 === '-a' || args1 === 'all') {
+      //todo delete -a / all
+      //全てのレコードに論理削除フラグを立てる
+      file.deleteFile('all');
+    } else if(args1 === 'first') {
+      //todo delete first
+      //最初に追加したtodoに論理削除フラグを立てる
+      file.deleteFile('first');
+    } else if(args1 === 'last') {
+      //todo delete last
+      //最後に追加したtodo論理削除フラグを立てる
+      file.deleteFile('last');
+    }
+  }
    break;
   default:
     //コマンドが間違っているので、helpを表示
       file.readHelp();
     break;
   case 'move':
-    if(args1 > 0 && args2 ==='to' && args3 > 0){
-      //todo move args1 to args3
-      file.moveFile(args1 - 1, args3 - 1);
-    } else {
-      //todo move
-      //引数が足りていないのでhelpを表示
-      file.readHelp();
+    if(util.isExistFile(path_todo)){
+      if(args1 > 0 && args2 ==='to' && args3 > 0){
+        //todo move args1 to args3
+        file.moveFile(args1 - 1, args3 - 1);
+      } else {
+        //todo move
+        //引数が足りていないのでhelpを表示
+        file.readHelp();
+      }
     }
   break;
 }
