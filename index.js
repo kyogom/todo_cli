@@ -11,6 +11,10 @@ var args3 = process.argv[5];
 //ファイルのpath
 var path_todo = "./todo.json";
 
+if(method !== 'add' && !util.isExistFile(path_todo)) {
+  return;
+}
+
 switch(method) {
   case 'list':
     if(!args1) {
@@ -56,7 +60,6 @@ switch(method) {
     }
     break;
   case 'delete':
-  if(util.isExistFile(path_todo)){
     if(args1 === '-a' || args1 === 'all') {
       //todo delete -a / all
       //全てのレコードに論理削除フラグを立てる
@@ -70,22 +73,19 @@ switch(method) {
       //最後に追加したtodo論理削除フラグを立てる
       file.deleteFile('last');
     }
-  }
    break;
   default:
     //コマンドが間違っているので、helpを表示
       file.readHelp();
     break;
   case 'move':
-    if(util.isExistFile(path_todo)){
-      if(args1 > 0 && args2 ==='to' && args3 > 0){
-        //todo move args1 to args3
-        file.moveFile(args1 - 1, args3 - 1);
-      } else {
-        //todo move
-        //引数が足りていないのでhelpを表示
-        file.readHelp();
-      }
+    if(args1 > 0 && (args2 === 'up' || args2 === 'down')){
+      //todo move args1 up/down
+      file.moveFile(args1 - 1, args2);
+    } else {
+      //todo move
+      //引数が足りていないのでhelpを表示
+      file.readHelp();
     }
   break;
 }
