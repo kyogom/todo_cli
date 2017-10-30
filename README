@@ -3,7 +3,7 @@ todoをmacのターミナルで管理できるツールです
 
 # 本アプリのセットアップ
 npmをインストール
-npm install -g todo-cli を実行
+npm install -g todo_cli_kyogo を実行
 
 # 操作コマンド
 list                      show all titles of todo
